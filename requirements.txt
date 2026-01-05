@@ -1,0 +1,9 @@
+sentence-transformers
+chromadb
+fastapi
+uvicorn[standard]
+python-multipart
+pypdf
+requests
+pydantic
+gradio

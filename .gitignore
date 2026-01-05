@@ -1,0 +1,90 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# IDE 和编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 项目特定 - 数据库和文档
+chroma_db/
+data/documents/
+*.db
+*.sqlite
+*.sqlite3
+
+# 环境变量和配置
+.env
+.env.local
+.env.*.local
+*.env
+
+# 日志文件
+*.log
+logs/
+*.log.*
+
+# 临时文件
+*.tmp
+*.temp
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 模型文件（如果很大，建议忽略）
+# models/
+# *.bin
+# *.safetensors
+# *.pt
+# *.pth
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# 操作系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# 备份文件
+*.bak
+*.backup
+*~
