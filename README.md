@@ -31,13 +31,13 @@
 ## 🚀 快速开始
 
 ### 1. 克隆项目
-h
-git clone <repository-url>
-cd second-brain### 2. 安装 Python 依赖
+git clone https://github.com/saaassin13/SecondBrain.git &&
+cd second-brain
+### 2. 安装 Python 依赖
 
 pip install -r requirements.txt### 3. 启动 Ollama 服务
 
-使用 Docker Compose 启动 Ollama 服务（会自动拉取 qwen2.5:7b 模型）：
+### 3. 使用 Docker Compose 启动 Ollama 服务（会自动拉取 qwen2.5:7b 模型）：
 
 # 启动 Ollama 服务（首次启动会自动下载模型，可能需要较长时间）
 docker compose up -d ollama
@@ -92,48 +92,9 @@ python app/main.py gradio### 5. 访问服务
    - 删除不需要的文档
 
 ### API 使用示例
+略
 
-#### 1. 上传文档
-
-curl -X POST "http://localhost:8000/api/upload" \
-  -F "file=@document.pdf" \
-  -F "chunk_mode=chunked"响应示例：
-{
-  "success": true,
-  "document_id": "uuid-here",
-  "filename": "document.pdf",
-  "file_type": "pdf",
-  "chunks_count": 10,
-  "message": "文档上传并向量化成功"
-}#### 2. 文档问答
-
-curl -X POST "http://localhost:8000/api/query" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "question": "文档的主要内容是什么？",
-    "top_k": 3
-  }'响应示例：
-{
-  "answer": "根据文档内容...",
-  "relevant_chunks": [
-    {
-      "chunk_id": "...",
-      "content": "文档片段内容...",
-      "metadata": {...},
-      "score": 0.95
-    }
-  ],
-  "question": "文档的主要内容是什么？",
-  "model": "qwen2.5:7b",
-  "timestamp": "2026-01-05T12:00:00"
-}#### 3. 列出所有文档
-
-curl "http://localhost:8000/api/documents"
-#### 4. 删除文档
-h
-curl -X DELETE "http://localhost:8000/api/documents/{document_id}"## ⚙️ 配置说明
-
-配置文件：`app/config.py`
+### 配置文件：`app/config.py`
 
 主要配置项：
 
@@ -151,34 +112,8 @@ curl -X DELETE "http://localhost:8000/api/documents/{document_id}"## ⚙️ 配�
 
 可通过环境变量覆盖配置：
 
-export OLLAMA_BASE_URL=http://localhost:11434
-export OLLAMA_MODEL=qwen2.5:7b
-export CHUNK_SIZE=500
-export CHUNK_OVERLAP=50
+export OLLAMA_BASE_URL=http://localhost:11434<br>
+export OLLAMA_MODEL=qwen2.5:7b<br>
+export CHUNK_SIZE=500<br>
+export CHUNK_OVERLAP=50<br>
 export TOP_K=3
-
-## 📁 项目结构
-
-second-brain/
-├── app/                    # 应用代码
-│   ├── api/               # API 路由
-│   │   ├── query.py      # 问答接口
-│   │   └── upload.py     # 上传接口
-│   ├── config.py          # 配置管理
-│   ├── document_processor.py  # 文档处理
-│   ├── gradio_ui.py      # Gradio 前端界面
-│   ├── models.py         # 数据模型
-│   ├── rag_service.py    # RAG 服务
-│   ├── vector_store.py   # 向量存储
-│   └── main.py           # FastAPI 应用入口
-├── data/
-│   └── documents/         # 上传的文档存储
-├── chroma_db/            # ChromaDB 数据目录
-├── tests/                # 测试脚本
-│   ├── check_chromadb.py
-│   ├── check_qwen.py
-│   └── check_sentence.py
-├── docker-compose.yml    # Ollama 服务配置
-├── requirements.txt      # Python 依赖
-├── run.py               # 一键启动脚本
-└── README.md            # 项目说明文档
