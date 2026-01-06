@@ -22,7 +22,7 @@
 
 ## 📋 环境要求
 
-- Python 3.8+
+- Python 3.10+
 - Docker 和 Docker Compose（用于运行 Ollama 服务）
 - NVIDIA GPU（推荐，用于加速 LLM 推理，CPU 模式也可运行但较慢）
 - 至少 8GB 内存
@@ -31,22 +31,34 @@
 ## 🚀 快速开始
 
 ### 1. 克隆项目
-git clone https://github.com/saaassin13/SecondBrain.git &&
-cd second-brain
+```sh
+git clone https://github.com/saaassin13/SecondBrain.git && cd second-brain
+```
 ### 2. 安装 Python 依赖
 
-pip install -r requirements.txt### 3. 启动 Ollama 服务
+```sh
+pip install -r requirements.txt
+```
 
 ### 3. 使用 Docker Compose 启动 Ollama 服务（会自动拉取 qwen2.5:7b 模型）：
 
 # 启动 Ollama 服务（首次启动会自动下载模型，可能需要较长时间）
+```sh
 docker compose up -d ollama
+```
 
 # 查看服务状态
+```sh
 docker compose ps ollama
+```
 
 # 查看日志
-docker compose logs -f ollama**注意**：首次启动时会自动下载 qwen2.5:7b 模型（约 4.4GB），请确保网络畅通且有足够的磁盘空间。
+```sh
+docker compose logs -f ollama
+```
+
+**注意**：
+首次启动时会自动下载 qwen2.5:7b 模型（约 4.4GB），请确保网络畅通且有足够的磁盘空间。
 
 ### 4. 启动应用
 
@@ -64,11 +76,22 @@ python run.py该脚本会同时启动：
 
 **启动后端服务**：
 
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload**启动前端界面**（新开一个终端）：
+```sh
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
 
-python -m app.gradio_ui或者：
+**启动前端界面**（新开一个终端）：
 
-python app/main.py gradio### 5. 访问服务
+```sh
+python -m app.gradio_ui
+```
+或者：
+
+```sh
+python app/main.py gradio
+```
+
+### 5. 访问服务
 
 - **Gradio Web 界面**：http://localhost:7860（推荐使用）
 - **FastAPI API 文档**：http://localhost:8000/docs
